@@ -17,3 +17,6 @@ insert into employee(id, name, salary, employee_type) values (60001, 'Kaushik', 
 insert into employee(id, name, hourly_wage, employee_type) values (60002, 'Shan', 100, 'PartTimeEmployee');
 
 insert into full_time_teacher(id, name, salary) values (70001, 'Kaushik', 20000);
+
+insert into animal(id, name) values (80001, 'Home Frog');
+insert into amphibian(id, type) values (80001, 'FROG');
