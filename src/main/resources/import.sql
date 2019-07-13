@@ -20,3 +20,6 @@ insert into full_time_teacher(id, name, salary) values (70001, 'Kaushik', 20000)
 
 insert into animal(id, name) values (80001, 'Home Frog');
 insert into amphibian(id, type) values (80001, 'FROG');
+
+insert into book(id, title, number_of_pages) values (90001, 'Java', 100);
+insert into blog_post(id, title, url) values (90002, 'Hibernate', 'http://www.hibernate.com');
