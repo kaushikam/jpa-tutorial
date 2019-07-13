@@ -21,6 +21,7 @@ public class CourseRepository {
         this.entityManager = entityManager;
     }
 
+    @Transactional
     public Course findById(Long id) {
         return entityManager.find(Course.class, id);
     }
@@ -31,6 +32,7 @@ public class CourseRepository {
         entityManager.remove(course);
     }
 
+    @Transactional
     public Course save(Course course) {
         if (course.getId() != null) {
             entityManager.persist(course);

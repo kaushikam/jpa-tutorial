@@ -2,6 +2,7 @@ package com.kaushikam.hibernatejpain100steps.repository;
 
 import com.kaushikam.hibernatejpain100steps.HibernateJpaIn100StepsApplication;
 import com.kaushikam.hibernatejpain100steps.entity.Course;
+import com.kaushikam.hibernatejpain100steps.entity.Review;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -13,9 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,17 +32,23 @@ public class CourseRepositoryTest {
     @Autowired
     private CourseRepository courseRepository;
 
+    @Autowired
+    private EntityManager entityManager;
+
     @Test
     @Transactional
     public void testFindCourse() {
         Course course = courseRepository.findById(10002L);
         Assert.assertEquals(Long.valueOf(10002L), course.getId());
+        Assert.assertEquals(2, course.getReviews().size());
     }
 
     @Test
     public void testDeleteCourse() {
         courseRepository.deleteById(10001L);
         Assert.assertNull(courseRepository.findById(10001L));
+        Review review = entityManager.find(Review.class, 50004L);
+        Assert.assertNull(review);
     }
 
     @Test
@@ -79,8 +88,18 @@ public class CourseRepositoryTest {
         Assert.assertEquals("Spring Boot in 100 steps", course.getName());
     }
 
-    private Date getDate(String dateAsString) throws Exception {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        return dateFormat.parse(dateAsString);
+    @Test
+    @Transactional
+    public void testSaveReviews() {
+        Course course = courseRepository.findById(10002L);
+        List<Review> reviews = new ArrayList<>();
+        reviews.add(new Review("5", "Wonderful"));
+        reviews.add(new Review("3", "OKAY"));
+        course.setReviews(reviews);
+        courseRepository.save(course);
+
+        Course foundCourse = courseRepository.findById(10002L);
+        foundCourse.getReviews().forEach(review -> logger.info("Review -> {}", review));
+        Assert.assertEquals(4, foundCourse.getReviews().size());
     }
 }

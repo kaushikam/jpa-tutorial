@@ -2,7 +2,8 @@ package com.kaushikam.hibernatejpain100steps.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NamedQueries( value =
@@ -19,6 +20,15 @@ public class Course {
     private String name;
 
     private LocalDateTime startedDate;
+
+    @OneToMany(
+            mappedBy = "course",
+            fetch = FetchType.LAZY,
+            // MERGE needed (not ALL) otherwise on fetching it will duplicate added entries
+            cascade = {CascadeType.MERGE},
+            orphanRemoval = true
+    )
+    private List<Review> reviews = new ArrayList<>();
 
     public Course() {}
 
@@ -45,6 +55,24 @@ public class Course {
 
     public LocalDateTime getStartedDate() {
         return startedDate;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        reviews.forEach(this::addReview);
+    }
+
+    public void addReview(Review review) {
+        this.reviews.add(review);
+        review.setCourse(this);
+    }
+
+    public void removeReview(Review review) {
+        this.reviews.remove(review);
+        review.setCourse(null);
     }
 
     @Override
