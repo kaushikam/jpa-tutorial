@@ -3,7 +3,9 @@ package com.kaushikam.hibernatejpain100steps.entity;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @NamedQueries( value =
@@ -29,6 +31,16 @@ public class Course {
             orphanRemoval = true
     )
     private List<Review> reviews = new ArrayList<>();
+
+    @ManyToMany( cascade = {
+        CascadeType.MERGE,
+        CascadeType.PERSIST
+    })
+    @JoinTable( name = "course_student",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id")
+    )
+    private Set<Student> students = new HashSet<>();
 
     public Course() {}
 
@@ -73,6 +85,24 @@ public class Course {
     public void removeReview(Review review) {
         this.reviews.remove(review);
         review.setCourse(null);
+    }
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        students.forEach(this::addStudent);
+    }
+
+    public void addStudent(Student student) {
+        this.students.add(student);
+        student.getCourses().add(this);
+    }
+
+    public void removeStudent(Student student) {
+        this.students.remove(student);
+        student.getCourses().remove(this);
     }
 
     @Override

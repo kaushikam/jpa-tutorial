@@ -1,6 +1,8 @@
 package com.kaushikam.hibernatejpain100steps.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Student {
@@ -15,6 +17,9 @@ public class Student {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "passport_id", referencedColumnName = "id")
     private Passport passport;
+
+    @ManyToMany(mappedBy = "students")
+    private Set<Course> courses = new HashSet<>();
 
     protected Student() {}
 
@@ -36,6 +41,10 @@ public class Student {
 
     public Passport getPassport() {
         return passport;
+    }
+
+    public Set<Course> getCourses() {
+        return courses;
     }
 
     @Override
