@@ -12,3 +12,6 @@ insert into review(id, rating, description, course_id) values (50001, '5', 'Grea
 insert into review(id, rating, description, course_id) values (50002, '4', 'Wonderful Course', 10002);
 insert into review(id, rating, description, course_id) values (50003, '5', 'Awesome Course', 10003);
 insert into review(id, rating, description, course_id) values (50004, '5', 'Unbelievable Course', 10001);
+
+insert into employee(id, name, salary, employee_type) values (60001, 'Kaushik', 7000, 'FullTimeEmployee');
+insert into employee(id, name, hourly_wage, employee_type) values (60002, 'Shan', 100, 'PartTimeEmployee');
