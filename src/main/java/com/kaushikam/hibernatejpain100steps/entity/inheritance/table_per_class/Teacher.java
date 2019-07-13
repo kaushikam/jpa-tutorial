@@ -1,25 +1,21 @@
-package com.kaushikam.hibernatejpain100steps.entity;
+package com.kaushikam.hibernatejpain100steps.entity.inheritance.table_per_class;
 
 import javax.persistence.*;
 
 @Entity
-@DiscriminatorColumn(
-        name = "EmployeeType",
-        discriminatorType = DiscriminatorType.STRING
-)
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public abstract class Employee {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Teacher {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(nullable = false)
     private String name;
 
-    protected Employee() {}
+    public Teacher() {}
 
-    public Employee(String name) {
+    public Teacher(String name) {
         this.name = name;
     }
 
@@ -37,7 +33,7 @@ public abstract class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "Teacher{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

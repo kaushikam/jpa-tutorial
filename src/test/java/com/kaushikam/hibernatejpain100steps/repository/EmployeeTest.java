@@ -1,9 +1,9 @@
 package com.kaushikam.hibernatejpain100steps.repository;
 
 import com.kaushikam.hibernatejpain100steps.HibernateJpaIn100StepsApplication;
-import com.kaushikam.hibernatejpain100steps.entity.Employee;
-import com.kaushikam.hibernatejpain100steps.entity.FullTimeEmployee;
-import com.kaushikam.hibernatejpain100steps.entity.PartTimeEmployee;
+import com.kaushikam.hibernatejpain100steps.entity.inheritance.single_table.Employee;
+import com.kaushikam.hibernatejpain100steps.entity.inheritance.single_table.FullTimeEmployee;
+import com.kaushikam.hibernatejpain100steps.entity.inheritance.single_table.PartTimeEmployee;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -35,14 +35,14 @@ public class EmployeeTest {
     }
 
     @Test
-    public void test2SavePartTimeEmployee() {
+    public void test3SavePartTimeEmployee() {
         PartTimeEmployee employee = new PartTimeEmployee("Sunil", BigDecimal.valueOf(100));
         employeeRepository.save(employee);
         Assert.assertNotNull(employee.getId());
     }
 
     @Test
-    public void test3FindAllEmployees() {
+    public void test2FindAllEmployees() {
         List<Employee> employees = employeeRepository.findAll();
         Assert.assertEquals(2, employees.size());
     }

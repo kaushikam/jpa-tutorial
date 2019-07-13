@@ -1,6 +1,6 @@
 package com.kaushikam.hibernatejpain100steps.repository;
 
-import com.kaushikam.hibernatejpain100steps.entity.inheritance.single_table.Employee;
+import com.kaushikam.hibernatejpain100steps.entity.inheritance.table_per_class.Teacher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,33 +11,33 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
-public class EmployeeRepository {
+public class TeacherRepository {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     private EntityManager entityManager;
 
     @Autowired
-    public EmployeeRepository(EntityManager entityManager) {
+    public TeacherRepository(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
+    public Teacher findById(Long id) {
+        return entityManager.find(Teacher.class, id);
+    }
+
     @Transactional
-    public void save(Employee employee) {
-        if (employee.getId() == null) {
-            entityManager.persist(employee);
+    public void save(Teacher teacher) {
+        if (teacher.getId() == null) {
+            this.entityManager.persist(teacher);
         } else {
-            entityManager.merge(employee);
+            this.entityManager.merge(teacher);
         }
     }
 
-    public Employee findById(Long id) {
-        return entityManager.find(Employee.class, id);
-    }
-
-    public List<Employee> findAll() {
+    public List<Teacher> findAll() {
         return entityManager
-                .createQuery("SELECT e FROM Employee e", Employee.class)
+                .createQuery("SELECT t FROM Teacher t", Teacher.class)
                 .getResultList();
     }
 }

@@ -15,3 +15,5 @@ insert into review(id, rating, description, course_id) values (50004, '5', 'Unbe
 
 insert into employee(id, name, salary, employee_type) values (60001, 'Kaushik', 7000, 'FullTimeEmployee');
 insert into employee(id, name, hourly_wage, employee_type) values (60002, 'Shan', 100, 'PartTimeEmployee');
+
+insert into full_time_teacher(id, name, salary) values (70001, 'Kaushik', 20000);

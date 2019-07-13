@@ -1,4 +1,4 @@
-package com.kaushikam.hibernatejpain100steps.entity;
+package com.kaushikam.hibernatejpain100steps.entity.inheritance.single_table;
 
 import javax.persistence.Entity;
 import java.math.BigDecimal;

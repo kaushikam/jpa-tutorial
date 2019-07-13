@@ -1,16 +1,16 @@
-package com.kaushikam.hibernatejpain100steps.entity;
+package com.kaushikam.hibernatejpain100steps.entity.inheritance.table_per_class;
 
 import javax.persistence.Entity;
 import java.math.BigDecimal;
 
 @Entity
-public class FullTimeEmployee extends Employee {
+public class FullTimeTeacher extends Teacher {
 
     private BigDecimal salary;
 
-    public FullTimeEmployee() {}
+    public FullTimeTeacher() {}
 
-    public FullTimeEmployee(String name, BigDecimal salary) {
+    public FullTimeTeacher(String name, BigDecimal salary) {
         super(name);
         this.salary = salary;
     }
@@ -27,8 +27,8 @@ public class FullTimeEmployee extends Employee {
     public String toString() {
         return "FullTimeEmployee{" +
                 "id=" + getId() +
-                ",name="  +getName() +
-                ",salary=" + salary +
+                ", name="  + getName() +
+                ", salary=" + salary +
                 '}';
     }
 }
