@@ -5,10 +5,13 @@ insert into course(id, name, started_date) values (10003, 'Java web services in 
 insert into passport(id, number) values (40001, 'A23123');
 insert into passport(id, number) values (40002, 'A33423');
 insert into passport(id, number) values (40003, 'A23432');
+insert into passport(id, number) values (40004, 'A33567');
+
 
 insert into student(id, name, passport_id) values (20001, 'Kaushik', 40001);
 insert into student(id, name, passport_id) values (20002, 'Shan', 40002);
 insert into student(id, name, passport_id) values (20003, 'Sunil', 40003);
+insert into student(id, name, passport_id) values (20004, 'Prem', 40004);
 
 insert into course_student (course_id, student_id) values (10001, 20001);
 insert into course_student (course_id, student_id) values (10001, 20003);
