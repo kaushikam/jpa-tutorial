@@ -13,6 +13,7 @@ import java.util.Set;
                 @NamedQuery(name = "findAll", query = "SELECT c FROM Course c")
         }
 )
+@Cacheable
 public class Course {
 
     @Id

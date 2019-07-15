@@ -14,9 +14,13 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 @SpringBootApplication
-public class JpaApplication implements CommandLineRunner {
+public class JpaApplication {
 
-	private StudentRepository studentRepository;
+	public static void main(String[] args) {
+		SpringApplication.run(JpaApplication.class, args);
+	}
+
+	/*private StudentRepository studentRepository;
 
 	private CourseRepository courseRepository;
 
@@ -42,8 +46,6 @@ public class JpaApplication implements CommandLineRunner {
 	@Override
 	@Transactional
 	public void run(String... args) throws Exception {
-		Student student = studentRepository.findById(20001L);
-		logger.info("student name: {}", student.getName());
-		//logger.info("Passport is {}", student.getPassport().getNumber());
-	}
+
+	}*/
 }
