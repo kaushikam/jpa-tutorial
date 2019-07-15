@@ -39,6 +39,7 @@ public class CourseRepositoryTest {
         Course course = courseRepository.findById(10002L);
         Assert.assertEquals(Long.valueOf(10002L), course.getId());
         Assert.assertEquals(2, course.getReviews().size());
+        Assert.assertFalse(course.isDeleted());
     }
 
     @Test

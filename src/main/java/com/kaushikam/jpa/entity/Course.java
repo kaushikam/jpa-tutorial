@@ -43,6 +43,9 @@ public class Course {
     )
     private Set<Student> students = new HashSet<>();
 
+    @Column(columnDefinition = "boolean default false")
+    private boolean deleted;
+
     public Course() {}
 
     public Course(String name, LocalDateTime startedDate) {
@@ -104,6 +107,14 @@ public class Course {
     public void removeStudent(Student student) {
         this.students.remove(student);
         student.getCourses().remove(this);
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 
     @Override

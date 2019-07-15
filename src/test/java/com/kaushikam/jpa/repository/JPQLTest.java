@@ -66,6 +66,24 @@ public class JPQLTest {
     }
 
     @Test
+    public void testJoinReturnChildEntity() {
+        Query query = entityManager.createQuery(
+                "SELECT s FROM Course c JOIN c.students s"
+        );
+        List resultList = query.getResultList();
+        resultList.forEach( c -> logger.info("Result -> {}", c));
+    }
+
+    @Test
+    public void testJoinReturnChildEntityReview() {
+        Query query = entityManager.createQuery(
+                "SELECT r FROM Course c JOIN c.reviews r WHERE c.id=10001L"
+        );
+        List resultList = query.getResultList();
+        resultList.forEach( c -> logger.info("Result -> {}", c));
+    }
+
+    @Test
     public void testJoin() {
         Query query = entityManager.createQuery(
                 "SELECT c, s FROM Course c JOIN c.students s"
