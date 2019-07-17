@@ -32,3 +32,10 @@ insert into amphibian(id, type) values (80001, 'FROG');
 
 insert into book(id, title, number_of_pages) values (90001, 'Java', 100);
 insert into blog_post(id, title, url) values (90002, 'Hibernate', 'http://www.hibernate.com');
+
+insert into question(id, question) values (80001, 'What is the meaning of life');
+insert into question(id, question) values (80002, 'What is the ancestry of people at south asia');
+insert into question(id, question) values (80003, 'How a class in Java is instantiated');
+insert into question(id, question) values (80004, 'What is the price of petrol');
+
+insert into answer(id, answer, question_id) values (90001, 'Life exists for not any meaning', 80001);
