@@ -1,6 +1,5 @@
 package com.kaushikam.jpa.entity;
 
-import com.kaushikam.jpa.Question;
 import lombok.*;
 
 import javax.persistence.*;
@@ -9,7 +8,7 @@ import javax.persistence.*;
 @Getter
 @Entity
 @NoArgsConstructor
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 @ToString(exclude = "question")
 public class Answer {
 

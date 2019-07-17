@@ -1,4 +1,4 @@
-package com.kaushikam.jpa;
+package com.kaushikam.jpa.entity;
 
 import com.kaushikam.jpa.entity.Answer;
 import lombok.*;

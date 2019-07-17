@@ -1,7 +1,7 @@
 package com.kaushikam.jpa.repository;
 
 import com.kaushikam.jpa.JpaApplication;
-import com.kaushikam.jpa.Question;
+import com.kaushikam.jpa.entity.Question;
 import com.kaushikam.jpa.entity.Course;
 import org.junit.Test;
 import org.junit.runner.RunWith;
