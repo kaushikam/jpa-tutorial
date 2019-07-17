@@ -8,7 +8,6 @@ import javax.persistence.*;
 @Getter
 @Entity
 @NoArgsConstructor
-@RequiredArgsConstructor
 @ToString(exclude = "question")
 public class Answer {
 
