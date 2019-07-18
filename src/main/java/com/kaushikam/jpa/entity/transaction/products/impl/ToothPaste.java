@@ -1,6 +1,7 @@
 package com.kaushikam.jpa.entity.transaction.products.impl;
 
 import com.kaushikam.jpa.entity.transaction.products.Product;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import java.util.Date;
 
 @Entity
+@Builder
 @ToString
 @NoArgsConstructor
 public class ToothPaste extends Product {

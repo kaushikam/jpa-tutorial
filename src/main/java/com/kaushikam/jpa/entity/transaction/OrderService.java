@@ -4,7 +4,6 @@ import com.kaushikam.jpa.entity.transaction.order.Order;
 import com.kaushikam.jpa.entity.transaction.products.Product;
 import com.kaushikam.jpa.entity.transaction.products.Stock;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class OrderService {
@@ -13,7 +12,7 @@ public class OrderService {
         Order order = existing != null ? existing : new Order();
         products.forEach(product -> {
             Stock stock = product.getStock();
-            order.addProduct(stock.sellProducts(1).get(0));
+            order.addProduct(stock.removeSingleProduct());
         });
         return order;
     }
@@ -22,7 +21,7 @@ public class OrderService {
         products.forEach(product -> {
             Stock stock = product.getOldStock();
             order.removeProduct(product);
-            stock.returnProducts(Arrays.asList(product));
+            stock.addProduct(product);
         });
 
         return order;

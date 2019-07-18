@@ -33,29 +33,24 @@ public class Stock {
     @OneToMany(mappedBy = "stock", cascade = CascadeType.PERSIST)
     private List<Product> products;
 
-    private void addProduct(Product product) {
+    public void addProduct(Product product) {
         this.products.add(product);
         product.setStock(this);
         product.setOldStock(null);
+    }
+
+    public Product removeSingleProduct() {
+        if (products.size() == 0)
+            throw new RuntimeException("Insufficient quantity");
+
+        Product product = products.get(0);
+        this.removeProduct(product);
+        return product;
     }
 
     private void removeProduct(Product product) {
         this.products.remove(product);
         product.setStock(null);
         product.setOldStock(this);
-    }
-
-    public void returnProducts(List<Product> products) {
-        products.forEach(this::addProduct);
-    }
-
-    public List<Product> sellProducts(int quantity) {
-        if (quantity > products.size())
-            throw new RuntimeException("Insufficient quantity");
-
-        List<Product> sold = products.subList(0, quantity);
-        sold.forEach(this::removeProduct);
-
-        return sold;
     }
 }
