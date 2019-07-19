@@ -6,7 +6,7 @@ import com.kaushikam.jpa.entity.transaction.products.Stock;
 
 import java.util.List;
 
-public class OrderService {
+public class OrderHandler {
 
     public Order addProducts(List<Product> products, Order existing) {
         Order order = existing != null ? existing : new Order();

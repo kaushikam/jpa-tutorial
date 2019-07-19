@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -31,12 +32,16 @@ public class Stock {
 
     @Setter(AccessLevel.NONE)
     @OneToMany(mappedBy = "stock", cascade = CascadeType.PERSIST)
-    private List<Product> products;
+    private List<Product> products = new ArrayList<>();
 
     public void addProduct(Product product) {
         this.products.add(product);
         product.setStock(this);
         product.setOldStock(null);
+    }
+
+    public void addProducts(List<Product> products) {
+        products.forEach(this::addProduct);
     }
 
     public Product removeSingleProduct() {

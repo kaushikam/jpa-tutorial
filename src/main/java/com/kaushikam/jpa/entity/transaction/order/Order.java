@@ -4,6 +4,7 @@ import com.kaushikam.jpa.entity.transaction.products.Product;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class Order {
     private Date orderedOn;
 
     @OneToMany(mappedBy = "order")
-    private List<Product> products;
+    private List<Product> products = new ArrayList<>();
 
     public void addProduct(Product product) {
         this.products.add(product);

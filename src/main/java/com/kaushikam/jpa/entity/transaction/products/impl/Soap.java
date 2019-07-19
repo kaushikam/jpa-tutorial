@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import java.util.Date;
 
 @Entity
-@Builder
 @ToString(callSuper = true)
 @NoArgsConstructor
 public class Soap extends Product {

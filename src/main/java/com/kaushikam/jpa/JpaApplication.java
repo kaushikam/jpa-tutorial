@@ -29,18 +29,18 @@ public class JpaApplication implements CommandLineRunner {
 		ToothPaste toothPaste1 = new ToothPaste(null, "Colgate", new Date(), new Date(), "ASGE", "1111EF", 100.0, ToothPaste.ToothPasteType.NORMAL);
 		ToothPaste toothPaste2 = new ToothPaste(null, "Colgate", new Date(), new Date(), "ASEE", "1111EF", 100.0, ToothPaste.ToothPasteType.NORMAL);
 		Stock stock = new Stock();
-		stock.returnProducts(Arrays.asList(toothPaste1, toothPaste2));
+		stock.addProducts(Arrays.asList(toothPaste1, toothPaste2));
 		entityManager.persist(stock);
 
 		Soap soap1 = new Soap(null, "Lux", new Date(), new Date(), "HDGF", "LL123", 100.0, Soap.Smell.LAVENDER);
 		Soap soap2 = new Soap(null, "Lux", new Date(), new Date(), "HDGF", "LL123", 100.0, Soap.Smell.LAVENDER);
 		Stock stock1 = new Stock();
-		stock.returnProducts(Arrays.asList(soap1, soap2));
+		stock.addProducts(Arrays.asList(soap1, soap2));
 		entityManager.persist(stock);
 
 		Soap soap3 = new Soap(null, "Lux", new Date(), new Date(), "HDGF", "LL124", 100.0, Soap.Smell.LAVENDER);
 		Stock stock2 = new Stock();
-		stock.returnProducts(Arrays.asList(soap3));
+		stock.addProducts(Arrays.asList(soap3));
 		entityManager.persist(stock);
 	}
 
