@@ -1,5 +1,7 @@
 package com.kaushikam.jpa;
 
+import com.kaushikam.jpa.entity.transaction.OrderHandler;
+import com.kaushikam.jpa.entity.transaction.order.ProductOrder;
 import com.kaushikam.jpa.entity.transaction.products.Stock;
 import com.kaushikam.jpa.entity.transaction.products.impl.Soap;
 import com.kaushikam.jpa.entity.transaction.products.impl.ToothPaste;

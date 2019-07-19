@@ -1,6 +1,6 @@
 package com.kaushikam.jpa.entity.transaction.products;
 
-import com.kaushikam.jpa.entity.transaction.order.Order;
+import com.kaushikam.jpa.entity.transaction.order.ProductOrder;
 import lombok.*;
 
 import javax.persistence.*;
@@ -33,7 +33,7 @@ public abstract class Product {
     private Stock oldStock;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Order order;
+    private ProductOrder order;
 
     public Product(Long id, String name, Date manufacturedOn,
                    Date expiry, String productCode, String batchNumber) {
